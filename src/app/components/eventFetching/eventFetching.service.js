@@ -27,7 +27,7 @@
     };
 
     return service;
-    
+
     function getEvents(limit) {
       //Get only the 10 last events
       if (!limit) {
