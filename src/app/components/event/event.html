@@ -1,8 +1,17 @@
-<div class="event">
-  <hr>
-  <h3>{{event.name}} in {{event.racetrack}}</h3>
-  <p>
-    {{event.text}}
-  </p>
-  <hr>  
+<div class="event table-responsive">
+  <!-- TODO: bootstrap this ugly-looking html later... -->
+  <table class="table">
+    <tr>
+      <td>
+        <h3>{{event.name}} in {{event.racetrack}}</h3>
+        <p>
+          {{event.text}}
+        </p>
+      </td>
+      <td>
+        <input type="submit" class="btn btn-primary pull-right" value="Edit Event" />
+        <input type="submit" class="btn btn-danger pull-right" value="Remove Event" ng-click="deleteEvent(event)" />
+      </td>
+    </tr>
+  </table>
 </div>

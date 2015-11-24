@@ -32,13 +32,12 @@
     function linkFunc() {}
 
     /** @ngInject */
-    function EventController() {
+    function EventController(eventFetching, $scope) {
       var vm = this;
-      activate();
 
-      function activate() {}
+      $scope.deleteEvent = function(myEvent) {
+        return eventFetching.deleteEvent(myEvent);
+      };
     }
-
   }
-
 })();
