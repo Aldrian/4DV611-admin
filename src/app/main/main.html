@@ -1,6 +1,24 @@
 <div class="container">
   <h1>Main view from admin panel</h1>
-
   <event event="event" ng-repeat="event in events"></event>
-  <input type="submit" class="btn btn-success" value="Add Event" ng-click="addNewEvent()" />
+  <form name="newEventForm" ng-submit="newEventForm.$valid && addNewEvent(newEvent)" novalidate>
+  <!-- New event preview -->
+  <div ng-show="newEvent">
+    <h3>{{newEvent.name}} in {{newEvent.racetrack}}</h3>
+    <p>
+      {{newEvent.text}}
+    </p>
+    <hr>
+  </div>
+  <fieldset class="form-group">
+    <input ng-model="newEvent.name" class="form-control" placeholder="Name..." title="Name" required />
+  </fieldset>
+  <fieldset class="form-group">
+    <input ng-model="newEvent.racetrack" class="form-control" placeholder="Racetrack..." title="Racetrack" required />
+  </fieldset>
+  <fieldset class="form-group">
+    <textarea ng-model="newEvent.text" class="form-control" placeholder="Description" title="Description" required></textarea>
+  </fieldset>
+  <input type="submit" class="btn btn-success" value="Add Event" />
+  </form>
 </div>

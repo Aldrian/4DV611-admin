@@ -15,13 +15,10 @@
       // Bind recieved events to the $scope.event variable.
       $scope.events = eventFetching.mockEvents();
 
-      $scope.addNewEvent = function() {
-        var myEvent = {
-          name: 'NewEvent' + ($scope.events.length + 1),
-          racetrack: 'Växjö',
-          text: 'Description...'
-        };
-        $scope.events.push(myEvent);
+      $scope.addNewEvent = function(newEvent) {
+        $scope.addEvent(newEvent);
+        this.newEvent = null;
+        $scope.newEventForm.$setPristine(true);
       };
 
       $scope.deleteEvent = function(myEvent) {

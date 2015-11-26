@@ -6,8 +6,8 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log) {
-
+  function runBlock(editableOptions, $log) {
+    editableOptions.theme = 'bs3';
     $log.debug('runBlock end');
   }
 
