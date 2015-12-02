@@ -35,6 +35,10 @@
     function EventController(eventFetching, $scope) {
       var vm = this;
 
+      $scope.setImage = function($file, $event, $flow) {
+        $flow.files.length = 0;
+      };
+
       $scope.deleteEvent = function(myEvent) {
         return eventFetching.deleteEvent(myEvent);
       };

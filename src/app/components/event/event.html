@@ -1,10 +1,52 @@
-<div class="event">
+<div class="event" flow-drag-enter="imageDropClass='drag-over'" flow-drag-leave="imageDropClass=''">
   <!-- TODO: bootstrap this ugly-looking html later... -->
-  <h3><a editable-text="event.name">{{event.name}}</a> in <a editable-text="event.racetrack">{{event.racetrack}}</a></h3>
-  <p>
-    <a editable-text="event.text">{{event.text}}</a>
-  </p>
-  <input type="submit" class="btn btn-danger pull-right" value="Remove Event" ng-click="deleteEvent(event)" />
-  <div class="clearfix" />
-  <hr>
+  <!-- editable-text="event.racetrack" -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a role="button" ng-click="collapsed = !collapsed">
+          {{event.racetrack}} {{event.date}}
+        </a>
+      </h4>
+    </div>
+    <div class="panel-collapse collapse collapse" collapse="!collapsed">
+      <div class="panel-body">
+        <form name="eventForm" ng-submit="eventForm.$valid && addNewEvent(newEvent)" novalidate>
+
+          <fieldset class="form-group">
+            <table> <tr> <td>
+              <div flow-init flow-file-added="setImage($file, $event, $flow)">
+                <div flow-drop ng-class="imageDropClass" class="drop-image" ng-style="style" style="margin-right: 14px">
+                  <img flow-btn flow-img="$flow.files[0]" class="img-rounded" width="200px" height="200px" style="cursor: pointer">
+                </div>
+                <!--ng-src="{{event.image}}"-->
+              </div>
+
+            </td> <td style="width: 100%; height: 100%">
+              <textarea ng-model="event.todays_offers" class="form-control" placeholder="Today's offers..." style="height: 107%" title="Description" required></textarea>
+            </td></tr></table>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <textarea ng-model="event.start_lists" class="form-control" placeholder="Start Lists..." title="Description" required></textarea>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <textarea ng-model="event.todays_highlights" class="form-control" placeholder="Today's highlights..." title="Description" required></textarea>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <textarea ng-model="event.todays_home_team" class="form-control" placeholder="Today's home team..." title="Description" required></textarea>
+          </fieldset>
+
+          <fieldset class="form-group">
+            <textarea ng-model="event.about" class="form-control" placeholder="About {{event.racetrack}}..." title="Description" required></textarea>
+          </fieldset>
+
+          <input type="submit" class="btn btn-success pull-right" value="Save Changes" ng-click="" />
+        </form>
+        <div class="clearfix" />
+      </div>
+    </div>
+  </div>
 </div>

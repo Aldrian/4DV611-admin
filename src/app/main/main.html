@@ -1,10 +1,17 @@
 <div class="container">
-  <h1>Main view from admin panel</h1>
+  <table> <tr> <td>
+    <img src="/app/resources/horse_head.jpg" width="50px" height = "50px" style="margin-right: 14px">
+  </td> <td style="width: 100%; height: 100%">
+    <h1>List of available events</h1>
+  </td></tr></table>
+
+  <hr>
   <event event="event" ng-repeat="event in events"></event>
+  <!--
   <form name="newEventForm" ng-submit="newEventForm.$valid && addNewEvent(newEvent)" novalidate>
-  <!-- New event preview -->
+
   <div ng-show="newEvent">
-    <h3>{{newEvent.name}} in {{newEvent.racetrack}}</h3>
+    <h3>{{newEvent.name}} at {{newEvent.racetrack}}</h3>
     <p>
       {{newEvent.text}}
     </p>
@@ -20,5 +27,5 @@
     <textarea ng-model="newEvent.text" class="form-control" placeholder="Description" title="Description" required></textarea>
   </fieldset>
   <input type="submit" class="btn btn-success" value="Add Event" />
-  </form>
+</form>-->
 </div>

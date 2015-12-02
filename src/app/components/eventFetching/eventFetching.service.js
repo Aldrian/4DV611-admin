@@ -55,21 +55,41 @@
 
     function mockEvents() {
       return [{
-        name: 'TestEventOne',
-        racetrack: 'Växjö',
-        text: 'Some test text'
+        date: '18 November',
+        racetrack: 'Solvalla',
+        image: '',
+        todays_offers: '',
+        start_lists: '',
+        todays_highlights: '',
+        todays_home_team: '',
+        about: ''
       }, {
-        name: 'TestEventTwo',
-        racetrack: 'Malmö',
-        text: 'Some more test text'
+        date: '18 November',
+        racetrack: 'Åby',
+        image: '',
+        todays_offers: '',
+        start_lists: '',
+        todays_highlights: '',
+        todays_home_team: '',
+        about: ''
       }, {
-        name: 'TestEventTre',
-        racetrack: 'Stockholm',
-        text: 'Much more test text'
+        date: '19 November',
+        racetrack: 'Täby galopp',
+        image: '',
+        todays_offers: '',
+        start_lists: '',
+        todays_highlights: '',
+        todays_home_team: '',
+        about: ''
       }, {
-        name: 'OneMoreEvent',
-        racetrack: 'Stockholm',
-        text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+        date: '19 November',
+        racetrack: 'Axevalla',
+        image: '',
+        todays_offers: '',
+        start_lists: '',
+        todays_highlights: '',
+        todays_home_team: '',
+        about: ''
       }];
     }
   }
