@@ -33,7 +33,11 @@
 
     function activate() {
       // Bind recieved events to the $scope.event variable.
-      $scope.events = eventFetching.mockEvents();
+      var eventPromise = eventFetching.getEvents();
+
+      eventPromise.then(function(data) {
+        $scope.events = data;
+      });
     }
 
   }

@@ -1,4 +1,4 @@
-.event {  
+.event {
   //Event directive specific styles goes here
   textarea {
     resize: vertical;
@@ -11,5 +11,8 @@
         opacity: 0.4;
       }
     }
+  }
+  .uppercase {
+    text-transform: uppercase;
   }
 }

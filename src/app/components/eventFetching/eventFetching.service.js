@@ -11,7 +11,7 @@
 
   /** @ngInject */
   function eventFetching($log, $http) {
-    var apiHost = 'http://serveradress.todo';
+    var apiHost = 'http://46.101.168.154:8080/api/v1.0';
 
     /**
      * Returns the interface of the service
@@ -28,13 +28,8 @@
 
     return service;
 
-    function getEvents(limit) {
-      //Get only the 10 last events
-      if (!limit) {
-        limit = 10;
-      }
-
-      return $http.get(apiHost + '/events?per_page=' + limit)
+    function getEvents() {
+      return $http.get(apiHost + '/events/')
         .then(getEventsComplete)
         .catch(getEventsFailed);
 
@@ -51,7 +46,29 @@
 
     function deleteEvent(event) {}
 
-    function editEvent(event) {}
+    function editEvent(event) {
+      /*
+      var req = {
+        method: 'PUT',
+        url: apiHost + '/events/',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: angular.toJson(event)
+      };
+      $http(req)
+        .success(function(response) {
+          $log.info("success: " + response);
+        }).error(function(response) {
+          $log.error("error: " + response);
+        });*/
+        $log.info(angular.toJson(event));
+        $http.put(apiHost + '/events/', angular.toJson(event), {
+          headers : {
+            'Content-Type' : 'application/json;charset=UTF-8'
+          }
+        });
+    }
 
     function mockEvents() {
       return [{
