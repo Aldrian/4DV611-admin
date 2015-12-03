@@ -1,16 +1,15 @@
-.event {
+.event {  
   //Event directive specific styles goes here
-}
-
-textarea {
-  resize: vertical;
-}
-
-.drop-image.drag-over {
-    background: #5CB85C;
-    color: #fff
-}
-
-div.drop-image.drag-over img {
-  opacity: 0.4;
+  textarea {
+    resize: vertical;
+  }
+  .drop-image {
+    &.drag-over {
+      background: #5CB85C;
+      color: #fff;
+      img {
+        opacity: 0.4;
+      }
+    }
+  }
 }
