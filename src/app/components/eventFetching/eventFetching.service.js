@@ -47,13 +47,10 @@
     function deleteEvent(event) {}
 
     function editEvent(event) {
-      /*
+      $log.info(angular.toJson(event));
       var req = {
         method: 'PUT',
         url: apiHost + '/events/',
-        headers: {
-          'Content-Type': 'application/json'
-        },
         data: angular.toJson(event)
       };
       $http(req)
@@ -61,12 +58,6 @@
           $log.info("success: " + response);
         }).error(function(response) {
           $log.error("error: " + response);
-        });*/
-        $log.info(angular.toJson(event));
-        $http.put(apiHost + '/events/', angular.toJson(event), {
-          headers : {
-            'Content-Type' : 'application/json;charset=UTF-8'
-          }
         });
     }
 

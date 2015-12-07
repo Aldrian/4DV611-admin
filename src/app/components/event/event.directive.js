@@ -39,9 +39,25 @@
         eventFetching.editEvent(event);
       };
 
+      $scope.imgContent = {};
+      $scope.imageString = [];
+
       $scope.setImage = function($file, $event, $flow, event) {
         $flow.files.length = 0;
-        event.image = $file;
+        //event.offerImage = $file;
+        console.log(event.image);
+
+        var fileReader = new FileReader();
+        fileReader.onload = function(fileData) {
+          console.log("fileReader loaded");
+          var uri = fileData.target.result;
+          $scope.imgContent = {
+              fileName: $file.name,
+              fileContent: uri
+          };
+          event.offerImageSource = $scope.imgContent.fileContent;
+        };
+        fileReader.readAsDataURL($file.file);
       };
 
       $scope.deleteEvent = function(myEvent) {

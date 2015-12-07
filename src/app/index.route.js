@@ -14,6 +14,13 @@
         controller: 'MainController',
         controllerAs: 'main'
       });
+    $stateProvider
+      .state('login', {
+        url: '/login',
+        templateUrl: 'app/components/login.html',
+        controller: 'LoginController',
+        controllerAs: 'login'
+      });
 
     $urlRouterProvider.otherwise('/');
   }

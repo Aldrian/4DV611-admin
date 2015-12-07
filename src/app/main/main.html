@@ -1,12 +1,16 @@
 <div class="container">
-  <table> <tr> <td>
+  <table class="centered-table"> <tr> <td>
     <img src="assets/images/horse_head.jpg" width="50px" height = "50px" style="margin-right: 14px">
-  </td> <td style="width: 100%; height: 100%">
+  </td> <td>
     <h1>List of available events</h1>
+  </td> <td>
+    You are logged in as {{userName}}
+  </td> <td>
+    <input type="submit" align="right" class="btn btn-danger" value="Log out" ng-click="" />
   </td></tr></table>
 
   <hr>
-  <event event="event" ng-repeat="event in events"></event>
+  <event event="event" ng-repeat="event in events | orderBy: 'date'"></event>
   <!--
   <form name="newEventForm" ng-submit="newEventForm.$valid && addNewEvent(newEvent)" novalidate>
 

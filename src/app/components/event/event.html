@@ -5,7 +5,7 @@
     <div class="panel-heading">
       <h4 class="panel-title">
         <a role="button" class="uppercase" ng-click="collapsed = !collapsed">
-          {{event.name}} {{event.date | date}}
+          {{event.track.name}} {{event.date | date}}
         </a>
       </h4>
     </div>
@@ -17,26 +17,26 @@
             <table> <tr> <td>
               <div flow-init flow-file-added="setImage($file, $event, $flow, event)">
                 <div flow-drop ng-class="imageDropClass" class="drop-image" ng-style="style" style="margin-right: 14px">
-                  <img flow-btn flow-img="event.image" class="img-rounded" width="200px" height="200px" style="cursor: pointer">
+                  <img flow-btn flow-img="$flow.files[0]" ng-src="{{event.offerImage}}" class="img-rounded" width="200px" height="200px" style="cursor: pointer">
                 </div>
                 <!--ng-src="{{event.image}}"-->
               </div>
 
             </td> <td style="width: 100%; height: 100%">
-              <textarea ng-model="event.offer" class="form-control" placeholder="Today's offers..." style="height: 107%" title="Description" required></textarea>
+              <textarea ng-model="event.offer" class="form-control" placeholder="Today's offers..." style="height: 107%" title="Today's offers" required></textarea>
             </td></tr></table>
           </fieldset>
 
           <fieldset class="form-group">
-            <textarea ng-model="event.highlight" class="form-control" placeholder="Today's highlights..." title="Description" required></textarea>
+            <textarea ng-model="event.highlight" class="form-control" placeholder="Today's highlights..." title="Today's highlights" required></textarea>
           </fieldset>
 
           <fieldset class="form-group">
-            <textarea ng-model="event.homeTeam" class="form-control" placeholder="Today's home team..." title="Description" required></textarea>
+            <textarea ng-model="event.homeTeam" class="form-control" placeholder="Today's home team..." title="Today's home team" required></textarea>
           </fieldset>
 
           <fieldset class="form-group">
-            <textarea ng-model="event.about" class="form-control" placeholder="About {{event.name}}..." title="Description" required></textarea>
+            <textarea ng-model="event.track.about" class="form-control" placeholder="About {{event.track.name}}..." title="About {{event.track.name}}" required></textarea>
           </fieldset>
 
           <input type="submit" class="btn btn-success pull-right" value="Save Changes" ng-click="saveChanges(event)" />
