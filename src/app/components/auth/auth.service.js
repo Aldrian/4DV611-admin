@@ -39,26 +39,13 @@
          * @return {Object|Promise}
          */
         getCurrentUser: function() {
-          var token = this.getToken();
-          if (!token) return null;
           return $http.get(eventFetching.apiHost + '/users/auth/', {
-              headers: {
-                'Authorization': token
-              }
+              
             })
             .then(function(res) {
               return res;
             });
         },
-
-        /**
-         * Get auth token
-         *
-         * @return {String} - a token string used for authenticating
-         */
-        getToken: function() {
-          return $cookies.get('token');
-        }
       };
     });
 })();
