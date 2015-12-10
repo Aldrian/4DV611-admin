@@ -1,35 +1,11 @@
-<div class="container">
-  <table class="centered-table"> <tr> <td>
-    <img src="assets/images/horse_head.jpg" width="50px" height = "50px" style="margin-right: 14px">
-  </td> <td>
-    <h1>List of available events</h1>
-  </td> <td>
-    You are logged in as {{userName}}
-  </td> <td>
-    <input type="submit" align="right" class="btn btn-danger" value="Log out" ng-click="" />
-  </td></tr></table>
-
-  <hr>
-  <event event="event" ng-repeat="event in events | orderBy: 'date'"></event>
-  <!--
-  <form name="newEventForm" ng-submit="newEventForm.$valid && addNewEvent(newEvent)" novalidate>
-
-  <div ng-show="newEvent">
-    <h3>{{newEvent.name}} at {{newEvent.racetrack}}</h3>
-    <p>
-      {{newEvent.text}}
-    </p>
-    <hr>
+<div class="container main-form">
+  <page-header></page-header>
+  <event event="event" ng-repeat="event in events | orderBy: '-date'"></event>
+  <div class="loader" ng-show="!loaded">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
   </div>
-  <fieldset class="form-group">
-    <input ng-model="newEvent.name" class="form-control" placeholder="Name..." title="Name" required />
-  </fieldset>
-  <fieldset class="form-group">
-    <input ng-model="newEvent.racetrack" class="form-control" placeholder="Racetrack..." title="Racetrack" required />
-  </fieldset>
-  <fieldset class="form-group">
-    <textarea ng-model="newEvent.text" class="form-control" placeholder="Description" title="Description" required></textarea>
-  </fieldset>
-  <input type="submit" class="btn btn-success" value="Add Event" />
-</form>-->
 </div>

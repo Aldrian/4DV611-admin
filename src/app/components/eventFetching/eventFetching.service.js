@@ -20,31 +20,47 @@
     var service = {
       apiHost: apiHost,
       getEvents: getEvents,
-      addEvent: addEvent,
       editEvent: editEvent,
-      deleteEvent: deleteEvent,
-      mockEvents: mockEvents
+      getUsers: getUsers,
+      editUser: editUser
     };
 
     return service;
 
-    function getEvents() {
-      return $http.get(apiHost + '/events/')
-        .then(getEventsComplete)
-        .catch(getEventsFailed);
-
-      function getEventsComplete(response) {
-        return response.data;
-      }
-
-      function getEventsFailed(error) {
-        $log.error('XHR Failed for getEvents.\n' + angular.toJson(error.data, true));
-      }
+    function getUsers() {
+      return $http.get(apiHost + '/users/')
+        .then(function(response) {
+          return response.data;
+        })
+        .catch(function(error) {
+          $log.error('XHR Failed for getUsers.\n' + angular.toJson(error.data, true));
+        });
     }
 
-    function addEvent(event) {}
+    function editUser(user) {
+      $log.info(angular.toJson(user));
+      var req = {
+        method: 'PUT',
+        url: apiHost + '/users/',
+        data: angular.toJson(user)
+      };
+      $http(req)
+        .success(function(response) {
+          $log.info("success: " + response);
+        }).error(function(response) {
+          $log.error("error: " + response);
+        });
+    }
 
-    function deleteEvent(event) {}
+    function getEvents() {
+      return $http.get(apiHost + '/events/')
+        .then(function(response) {
+          return response.data;
+        })
+        .catch(function(error) {
+          $log.error('XHR Failed for getEvents.\n' + angular.toJson(error.data, true));
+        });
+    }
 
     function editEvent(event) {
       $log.info(angular.toJson(event));
@@ -59,46 +75,6 @@
         }).error(function(response) {
           $log.error("error: " + response);
         });
-    }
-
-    function mockEvents() {
-      return [{
-        date: '18 November',
-        racetrack: 'Solvalla',
-        image: '',
-        todays_offers: '',
-        start_lists: '',
-        todays_highlights: '',
-        todays_home_team: '',
-        about: ''
-      }, {
-        date: '18 November',
-        racetrack: 'Åby',
-        image: '',
-        todays_offers: '',
-        start_lists: '',
-        todays_highlights: '',
-        todays_home_team: '',
-        about: ''
-      }, {
-        date: '19 November',
-        racetrack: 'Täby galopp',
-        image: '',
-        todays_offers: '',
-        start_lists: '',
-        todays_highlights: '',
-        todays_home_team: '',
-        about: ''
-      }, {
-        date: '19 November',
-        racetrack: 'Axevalla',
-        image: '',
-        todays_offers: '',
-        start_lists: '',
-        todays_highlights: '',
-        todays_home_team: '',
-        about: ''
-      }];
     }
   }
 })();

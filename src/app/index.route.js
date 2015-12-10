@@ -12,14 +12,22 @@
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main'
-      });
-    $stateProvider
+        controllerAs: 'main',
+        params: {
+          username: null
+        }
+      })
       .state('login', {
         url: '/login',
-        templateUrl: 'app/components/login.html',
+        templateUrl: 'app/login/login.html',
         controller: 'LoginController',
         controllerAs: 'login'
+      })
+      .state('userManage', {
+        url: '/users',
+        templateUrl: 'app/userManage/userManage.html',
+        controller: 'UserManageController',
+        controllerAs: 'userManage'
       });
 
     $urlRouterProvider.otherwise('/');

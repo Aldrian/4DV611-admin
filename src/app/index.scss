@@ -35,6 +35,11 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   border-color: #78FA89;
 }
 
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically

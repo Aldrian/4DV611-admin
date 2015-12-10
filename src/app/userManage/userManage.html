@@ -1,0 +1,32 @@
+<div class="container user-manage">
+  <page-header></page-header>
+  <div class="container">
+    <table class="table"> <!-- table-hover -->
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Password</th>
+          <th style="text-align: center">Active</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="user in users | orderBy: 'username'"> <!-- ng-click="selectUser(user)" -->
+          <td class="col-md-2">{{user.username}}</td>
+          <td class="col-md-2">
+            <input type="text" class="form-control" placeholder="Password..." ng-model="user.password">
+            <!--<a editable-text="user.password" >{{ user.password || "empty" }}</a>-->
+          </td>
+          <td class="col-md-2">
+            <div class="squaredOne">
+              <input type="checkbox" value="None" id="{{user.username}}" name="check" ng-model="user.enabled" />
+              <label for="{{user.username}}"></label>
+            </div>
+          </td>
+          <td class="col-md-1">
+            <input type="submit" class="btn btn-success" value="Save Changes" ng-click="saveUsers(user)" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

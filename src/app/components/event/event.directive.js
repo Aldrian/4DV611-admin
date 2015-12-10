@@ -33,8 +33,6 @@
 
     /** @ngInject */
     function EventController(eventFetching, $scope) {
-      var vm = this;
-
       $scope.saveChanges = function(event) {
         eventFetching.editEvent(event);
       };

@@ -6,39 +6,28 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(eventFetching, $scope, $log) {
+  function MainController(eventFetching, $scope, $log, $state, $stateParams) {
     var vm = this;
-
-    $scope.addNewEvent = function(newEvent) {
-      $scope.addEvent(newEvent);
-      this.newEvent = null;
-      $scope.newEventForm.$setPristine(true);
-    };
-
-    $scope.deleteEvent = function(myEvent) {
-      $log.info('deleteEvent for ' + myEvent.name);
-      eventFetching.deleteEvent(myEvent);
-      // Todo : if Ok, splice
-      var index = $scope.events.indexOf(myEvent);
-      $scope.events.splice(index, 1);
-    };
-
-    $scope.addEvent = function(myEvent) {
-      eventFetching.addEvent(myEvent);
-      //Todo : if OK, push
-      $scope.events.push(myEvent);
-    };
+    /*if (!$scope.username) {
+      $state.go("login");
+    }*/
+    $scope.loaded = false;
 
     activate();
 
     function activate() {
-      // Bind recieved events to the $scope.event variable.
+      // Bind recieved events to the $scope.events variable.
       var eventPromise = eventFetching.getEvents();
 
       eventPromise.then(function(data) {
         $scope.events = data;
+        $scope.loaded = true;
       });
-    }
 
+      $scope.navButtonText = 'Manage users';
+    }
+    $scope.manageUsers = function() {
+      $state.go("userManage");
+    };
   }
 })();
