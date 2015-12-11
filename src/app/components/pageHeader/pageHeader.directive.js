@@ -10,25 +10,28 @@
       templateUrl: 'app/components/pageHeader/pageHeader.html',
       restrict: 'E',
       controller: PageHeaderController,
-      controllerAs: 'phc'
+      controllerAs: 'pageHeaderController'
     };
 
     return directive;
 
     /** @ngInject */
     function PageHeaderController($scope, $state, Auth, $log) {
-      $scope.username = 'loading...';
-      var currentUser = Auth.getCurrentUser();
-      if (currentUser) {
-        currentUser.then(function(response) {
+      activate();
+
+      function activate() {
+        var currentUser = Auth.getCurrentUser();
+
+        if (currentUser) {
+          currentUser.then(function(response) {
             $log.info(response);
             if (response) {
-              $scope.username = response.data.username;
+              $scope.currentUser = response.data;
             }
           });
-      } else {
-        $scope.username = 'NOT AUTHORIZED';
+        }
       }
+
       $scope.logout = function() {
         Auth.logout();
         $state.go("login");

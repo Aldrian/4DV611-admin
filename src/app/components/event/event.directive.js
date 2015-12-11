@@ -24,7 +24,7 @@
       templateUrl: 'app/components/event/event.html',
       link: linkFunc,
       controller: EventController,
-      controllerAs: 'vm'
+      controllerAs: 'eventController'
     };
 
     return directive;
@@ -33,17 +33,23 @@
 
     /** @ngInject */
     function EventController(eventFetching, $scope) {
+      activate();
+
+      function activate() {
+        $scope.imgContent = {};
+        $scope.imageString = [];
+      }
+
       $scope.saveChanges = function(event) {
         eventFetching.editEvent(event);
       };
 
-      $scope.imgContent = {};
-      $scope.imageString = [];
+      $scope.discardChanges = function(event) {
+        console.log(event);
+      };
 
       $scope.setImage = function($file, $event, $flow, event) {
         $flow.files.length = 0;
-        //event.offerImage = $file;
-        console.log(event.image);
 
         var fileReader = new FileReader();
         fileReader.onload = function(fileData) {
@@ -55,11 +61,8 @@
           };
           event.offerImageSource = $scope.imgContent.fileContent;
         };
-        fileReader.readAsDataURL($file.file);
-      };
 
-      $scope.deleteEvent = function(myEvent) {
-        return eventFetching.deleteEvent(myEvent);
+        fileReader.readAsDataURL($file.file);
       };
     }
   }

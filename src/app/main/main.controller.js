@@ -6,17 +6,12 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(eventFetching, $scope, $log, $state, $stateParams) {
-    var vm = this;
-    /*if (!$scope.username) {
-      $state.go("login");
-    }*/
-    $scope.loaded = false;
-
+  function MainController(eventFetching, $scope, $log, $state) {
     activate();
 
     function activate() {
-      // Bind recieved events to the $scope.events variable.
+      $scope.loaded = false;
+
       var eventPromise = eventFetching.getEvents();
 
       eventPromise.then(function(data) {
@@ -26,6 +21,7 @@
 
       $scope.navButtonText = 'Manage users';
     }
+
     $scope.manageUsers = function() {
       $state.go("userManage");
     };

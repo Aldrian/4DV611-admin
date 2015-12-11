@@ -2,13 +2,15 @@
   'use strict';
 
   angular.module('4Dv611Admin')
-    .controller('UserManageController', function($scope, eventFetching, $state) {
-      $scope.loaded = false;
+    .controller('UserManageController', UserManageController);
+
+    function UserManageController($scope, userManaging, $state) {
       activate();
 
       function activate() {
-        // Bind recieved users to the $scope.users variable.
-        var usersPromise = eventFetching.getUsers();
+        $scope.loaded = false;
+
+        var usersPromise = userManaging.getUsers();
 
         usersPromise.then(function(data) {
           $scope.users = data;
@@ -23,11 +25,11 @@
       };
 
       $scope.saveUsers = function(user) {
-        eventFetching.editUser(user);
+        userManaging.editUser(user);
       };
 
       $scope.manageUsers = function() {
         $state.go("home");
       };
-    });
+    }
 })();

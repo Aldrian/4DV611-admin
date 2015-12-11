@@ -12,10 +12,7 @@
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main',
-        params: {
-          username: null
-        }
+        controllerAs: 'main'
       })
       .state('login', {
         url: '/login',

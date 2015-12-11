@@ -2,7 +2,7 @@
   'use strict';
 
   angular.module('4Dv611Admin')
-    .factory('Auth', function Auth($http, $cookies, $q, eventFetching) {
+    .factory('Auth', function Auth($http, $cookies, $q, userManaging) {
       return {
 
         /**
@@ -14,7 +14,7 @@
         login: function(user) {
           var encodedAuthToken = 'Basic ' + btoa(user.username + ':' + user.password);
 
-          return $http.get(eventFetching.apiHost + '/users/auth/', {
+          return $http.get(userManaging.apiHost + '/users/auth/', {
               headers: {
                 'Authorization': encodedAuthToken
               }
@@ -39,8 +39,8 @@
          * @return {Object|Promise}
          */
         getCurrentUser: function() {
-          return $http.get(eventFetching.apiHost + '/users/auth/', {
-              
+          return $http.get(userManaging.apiHost + '/users/auth/', {
+
             })
             .then(function(res) {
               return res;

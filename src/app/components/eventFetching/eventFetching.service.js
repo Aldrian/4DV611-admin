@@ -10,8 +10,8 @@
     .factory('eventFetching', eventFetching);
 
   /** @ngInject */
-  function eventFetching($log, $http) {
-    var apiHost = 'http://46.101.168.154:8080/api/v1.0';
+  function eventFetching($log, $http, API_HOST_ADDRESS) {
+    var apiHost = API_HOST_ADDRESS;
 
     /**
      * Returns the interface of the service
@@ -20,37 +20,10 @@
     var service = {
       apiHost: apiHost,
       getEvents: getEvents,
-      editEvent: editEvent,
-      getUsers: getUsers,
-      editUser: editUser
+      editEvent: editEvent
     };
 
     return service;
-
-    function getUsers() {
-      return $http.get(apiHost + '/users/')
-        .then(function(response) {
-          return response.data;
-        })
-        .catch(function(error) {
-          $log.error('XHR Failed for getUsers.\n' + angular.toJson(error.data, true));
-        });
-    }
-
-    function editUser(user) {
-      $log.info(angular.toJson(user));
-      var req = {
-        method: 'PUT',
-        url: apiHost + '/users/',
-        data: angular.toJson(user)
-      };
-      $http(req)
-        .success(function(response) {
-          $log.info("success: " + response);
-        }).error(function(response) {
-          $log.error("error: " + response);
-        });
-    }
 
     function getEvents() {
       return $http.get(apiHost + '/events/')
@@ -63,7 +36,6 @@
     }
 
     function editEvent(event) {
-      $log.info(angular.toJson(event));
       var req = {
         method: 'PUT',
         url: apiHost + '/events/',
@@ -71,7 +43,7 @@
       };
       $http(req)
         .success(function(response) {
-          $log.info("success: " + response);
+          $log.info("event saved: " + response);
         }).error(function(response) {
           $log.error("error: " + response);
         });

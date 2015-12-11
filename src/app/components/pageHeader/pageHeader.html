@@ -2,10 +2,10 @@
   <nav>
     <ul class="nav nav-pills pull-right" style="margin-top: 20px">
       <li style="padding-right: 20px; padding-top: 7px">
-        You are logged in as <b>{{username}}</b>
+        You are logged in as <b>{{currentUser.username}}</b>
       </li>
       <li style="padding-right: 20px">
-        <input type="submit" class="btn btn-info" value="{{navButtonText}}" ng-click="manageUsers()" />
+        <input type="submit" class="btn btn-info" value="{{navButtonText}}" ng-click="manageUsers()" ng-show="currentUser.role == 0" />
       </li>
       <li>
         <input type="submit" class="btn btn-danger" value="Log out" ng-click="logout()" />

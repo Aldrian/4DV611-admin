@@ -10,8 +10,8 @@
     .factory('userManaging', userManaging);
 
   /** @ngInject */
-  function userManaging($log, $http) {
-    var apiHost = 'http://46.101.168.154:8080/api/v1.0';
+  function userManaging($log, $http, API_HOST_ADDRESS) {
+    var apiHost = API_HOST_ADDRESS;
 
     /**
      * Returns the interface of the service
