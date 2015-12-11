@@ -1,7 +1,7 @@
 /**
  * Directive displaying the events fetched after the request.
  * The template : event.html iterates on this array to display the images
- * @param [object] event : the iterated event
+ * @param [object]event : the iterated event
  * @see eventFetching.service.js
  * @see main.html
  *
@@ -14,7 +14,6 @@
     .module('4Dv611Admin')
     .directive('event', eventDirective);
 
-  /** @ngInject */
   function eventDirective() {
     var directive = {
       restrict: 'E',
@@ -32,7 +31,7 @@
     function linkFunc() {}
 
     /** @ngInject */
-    function EventController(eventFetching, $scope) {
+    function EventController(eventFetching, $scope, $log) {
       activate();
 
       function activate() {
@@ -45,7 +44,7 @@
       };
 
       $scope.discardChanges = function(event) {
-        console.log(event);
+        $log.info(event);
       };
 
       $scope.setImage = function($file, $event, $flow, event) {
@@ -53,7 +52,6 @@
 
         var fileReader = new FileReader();
         fileReader.onload = function(fileData) {
-          console.log("fileReader loaded");
           var uri = fileData.target.result;
           $scope.imgContent = {
               fileName: $file.name,

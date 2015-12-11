@@ -5,7 +5,6 @@
     .module('4Dv611Admin')
     .controller('MainController', MainController);
 
-  /** @ngInject */
   function MainController(eventFetching, $scope, $log, $state) {
     activate();
 

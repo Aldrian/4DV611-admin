@@ -45,7 +45,7 @@
             .then(function(res) {
               return res;
             });
-        },
+        }
       };
     });
 })();

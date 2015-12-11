@@ -1,4 +1,3 @@
-/* global constantname:false*/
 (function() {
   'use strict';
 
