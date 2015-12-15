@@ -11,13 +11,13 @@
     </div>
     <div class="panel-collapse collapse collapse" collapse="!collapsed">
       <div class="panel-body">
-        <form name="eventForm" ng-submit="eventForm.$valid && addNewEvent(newEvent)" novalidate>
+        <form name="eventForm" ng-submit="eventForm.$valid && saveChanges(event)">
 
           <fieldset class="form-group">
             <table> <tr> <td>
               <div flow-init flow-file-added="setImage($file, $event, $flow, event)">
                 <div flow-drop ng-class="imageDropClass" class="drop-image" ng-style="style" style="margin-right: 14px">
-                  <img flow-btn flow-img="$flow.files[0]" ng-src="{{event.offerImage}}" class="img-rounded" width="200px" height="200px" style="cursor: pointer">
+                  <img flow-btn flow-img="$flow.files[0]" ph-img="Upload image..." ng-src="{{event.offerImage}}" loading-src="assets/images/no_image_placeholder.png" class="img-rounded" width="200px" height="200px" style="cursor: pointer">
                 </div>
                 <!--ng-src="{{event.image}}"-->
               </div>
@@ -39,8 +39,9 @@
             <textarea ng-model="event.track.about" class="form-control" placeholder="About {{event.track.name}}..." title="About {{event.track.name}}" required></textarea>
           </fieldset>
 
-          <input type="submit" class="btn btn-success pull-right" value="Save Changes" ng-click="saveChanges(event)" />
-          <input type="submit" class="btn btn-danger pull-right" style="margin-right: 14px" value="Discard Changes" ng-click="discardChanges(event)" />
+          <input type="submit" class="btn btn-warning pull-right" value="Publish Event" />
+          <input type="submit" class="btn btn-success pull-right animate-show" style="margin-right: 14px" value="Save Changes" ng-show="eventForm.$dirty" />
+          <input type="button" class="btn btn-danger pull-right animate-show" style="margin-right: 14px" value="Discard Changes" ng-click="discardChanges(event)" ng-show="eventForm.$dirty" />
         </form>
         <div class="clearfix" />
       </div>

@@ -45,6 +45,7 @@
 
       $scope.discardChanges = function(event) {
         $log.info(event);
+        eventOffers.$rollbackViewValue();
       };
 
       $scope.setImage = function($file, $event, $flow, event) {
