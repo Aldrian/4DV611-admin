@@ -21,7 +21,7 @@
       }
 
       $scope.selectUser = function(user) {
-        $scope.currentUser = user;
+        $scope.selectedUser = user;
       };
 
       $scope.saveUsers = function(user) {
