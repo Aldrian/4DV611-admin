@@ -12,25 +12,25 @@
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main'
+        controllerAs: 'mainCtrl'
       })
       .state('login', {
         url: '/login',
         templateUrl: 'app/login/login.html',
         controller: 'LoginController',
-        controllerAs: 'login'
+        controllerAs: 'loginCtrl'
       })
       .state('userManage', {
         url: '/users',
         templateUrl: 'app/userManage/userManage.html',
         controller: 'UserManageController',
-        controllerAs: 'userManage'
+        controllerAs: 'userManageCtrl'
       })
       .state('visitStatistics', {
         url: '/statistics',
         templateUrl: 'app/visitStatistics/visitStatistics.html',
         controller: 'VisitStatisticsController',
-        controllerAs: 'visitStatistics'
+        controllerAs: 'visitStatisticsCtrl'
       });
 
     $urlRouterProvider.otherwise('/');
