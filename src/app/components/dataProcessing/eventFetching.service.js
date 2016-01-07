@@ -10,7 +10,7 @@
     .factory('eventFetching', eventFetching);
 
   /** @ngInject */
-  function eventFetching($log, $http, API_HOST_ADDRESS) {
+  function eventFetching($log, $http, $filter, API_HOST_ADDRESS) {
     var apiHost = API_HOST_ADDRESS;
 
     /**
@@ -20,13 +20,16 @@
     var service = {
       apiHost: apiHost,
       getEvents: getEvents,
-      editEvent: editEvent
+      editEvent: editEvent,
+      publishEvent: publishEvent
     };
+
+    var currentDate = $filter('date')(new Date(), 'yyyy-MM-dd');
 
     return service;
 
     function getEvents() {
-      return $http.get(apiHost + '/events/')
+      return $http.get(apiHost + '/events/?fromDate=' + currentDate)
         .then(function(response) {
           return response.data;
         })
@@ -46,6 +49,16 @@
           $log.info("event saved: " + response);
         }).error(function(response) {
           $log.error("error: " + response);
+        });
+    }
+
+    function publishEvent(event) {
+      return $http.post(apiHost + '/publish/', angular.toJson(event))
+        .then(function(response) {
+          return response.data;
+        })
+        .catch(function(error) {
+          $log.error('XHR Failed for getEvents.\n' + angular.toJson(error.data, true));
         });
     }
   }

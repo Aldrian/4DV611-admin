@@ -28,6 +28,7 @@
     function getUsers() {
       return $http.get(apiHost + '/users/')
         .then(function(response) {
+          $log.info(response.data);
           return response.data;
         })
         .catch(function(error) {

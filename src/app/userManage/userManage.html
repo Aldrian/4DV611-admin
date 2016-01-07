@@ -10,15 +10,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="user in users | orderBy: 'username'"> <!-- ng-click="selectUser(user)" -->
+        <tr ng-repeat="user in users | orderBy: 'username'" ng-show="user.role == '1' || user.role == '0'"> <!-- ng-click="selectUser(user)" -->
           <td class="col-md-2">{{user.username}}</td>
           <td class="col-md-2">
-            <input type="text" class="form-control" placeholder="Password..." ng-model="user.password">
+            <input type="text" class="form-control" placeholder="Password..." ng-model="user.password" ng-disabled="user.username == 'admin'">
             <!--<a editable-text="user.password" >{{ user.password || "empty" }}</a>-->
           </td>
           <td class="col-md-2">
             <div class="squaredOne">
-              <input type="checkbox" value="None" id="{{user.username}}" name="check" ng-model="user.enabled" />
+              <input type="checkbox" value="None" id="{{user.username}}" name="check" ng-model="user.enabled" ng-disabled="user.username == 'admin'"/>
               <label for="{{user.username}}"></label>
             </div>
           </td>

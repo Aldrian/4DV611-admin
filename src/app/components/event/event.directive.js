@@ -35,6 +35,8 @@
       activate();
 
       function activate() {
+        $scope.tempEvent = $scope.event;
+        $log.info($scope.tempEvent);
         $scope.imgContent = {};
         $scope.imageString = [];
       }
@@ -46,6 +48,11 @@
       $scope.discardChanges = function(event) {
         $log.info(event);
         eventOffers.$rollbackViewValue();
+      };
+
+      $scope.publishEvent = function(event) {
+        event.published = true;
+        eventFetching.publishEvent(event);
       };
 
       $scope.setImage = function($file, $event, $flow, event) {
