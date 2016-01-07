@@ -18,11 +18,16 @@
         $scope.loaded = true;
       });
 
-      $scope.navButtonText = 'Manage users';
+      $scope.eventsHeaderButtonText = 'Manage users';
+      $scope.statisticsHeaderButtonText = 'Visit statistics';
     }
 
     $scope.manageUsers = function() {
       $state.go("userManage");
+    };
+
+    $scope.visitStatistics = function() {
+      $state.go("visitStatistics");
     };
   }
 })();

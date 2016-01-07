@@ -5,7 +5,10 @@
         You are logged in as <b>{{currentUser.username}}</b>
       </li>
       <li style="padding-right: 20px">
-        <input type="submit" class="btn btn-info" value="{{navButtonText}}" ng-click="manageUsers()" ng-show="currentUser.role == 0" />
+        <input type="submit" class="btn btn-warning" value="{{statisticsHeaderButtonText}}" ng-click="visitStatistics()" ng-show="currentUser.role == 0" />
+      </li>
+      <li style="padding-right: 20px">
+        <input type="submit" class="btn btn-info" value="{{eventsHeaderButtonText}}" ng-click="manageUsers()" ng-show="currentUser.role == 0" />
       </li>
       <li>
         <input type="submit" class="btn btn-danger" value="Log out" ng-click="logout()" />

@@ -25,6 +25,12 @@
         templateUrl: 'app/userManage/userManage.html',
         controller: 'UserManageController',
         controllerAs: 'userManage'
+      })
+      .state('visitStatistics', {
+        url: '/statistics',
+        templateUrl: 'app/visitStatistics/visitStatistics.html',
+        controller: 'VisitStatisticsController',
+        controllerAs: 'visitStatistics'
       });
 
     $urlRouterProvider.otherwise('/');

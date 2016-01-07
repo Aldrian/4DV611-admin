@@ -17,7 +17,8 @@
           $scope.loaded = true;
         });
 
-        $scope.navButtonText = 'Back to events';
+        $scope.eventsHeaderButtonText = 'Back to events';
+        $scope.statisticsHeaderButtonText = 'Visit statistics';
       }
 
       $scope.selectUser = function(user) {
@@ -30,6 +31,10 @@
 
       $scope.manageUsers = function() {
         $state.go("home");
+      };
+
+      $scope.visitStatistics = function() {
+        $state.go("visitStatistics");
       };
     }
 })();
