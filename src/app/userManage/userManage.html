@@ -1,32 +1,35 @@
 <div class="container">
   <page-header></page-header>
   <div class="container user-manage">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>Username</th>
-          <th>Password</th>
-          <th style="text-align: center">Active</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="user in users | orderBy: 'username'" ng-show="user.role == '1' || user.role == '0'"> <!-- ng-click="selectUser(user)" -->
-          <td class="col-md-2">{{user.username}}</td>
-          <td class="col-md-2">
-            <input type="text" class="form-control" placeholder="Password..." ng-model="user.password" ng-disabled="user.username == 'admin'">
-            <!--<a editable-text="user.password" >{{ user.password || "empty" }}</a>-->
-          </td>
-          <td class="col-md-2">
-            <div class="squaredOne">
-              <input type="checkbox" value="None" id="{{user.username}}" name="check" ng-model="user.enabled" ng-disabled="user.username == 'admin'"/>
-              <label for="{{user.username}}"></label>
-            </div>
-          </td>
-          <td class="col-md-1">
-            <input type="submit" class="btn btn-success" value="Save Changes" ng-click="saveUsers(user)" />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <main>
+      <table id="rwd-table">
+        <thead>
+          <tr>
+            <th>UserName</th>
+            <th>Password</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="user in users | orderBy: 'username'" ng-show="user.role == '1' || user.role == '0'" ng-click="selectUser(user)">
+            <td>{{user.username}}</td>
+            <td>
+              <input type="text" class="form-control" placeholder="Password..." ng-model="user.password">
+            </td>
+            <td>
+              <label for="{{user.username}}">
+                <input type="checkbox" class="ios-switch green  bigswitch" value="none" name="check" ng-model="user.enabled" id="{{user.username}}" />
+                <div>
+                  <div></div>
+                  <input type="submit" class="btn btn-success slide-right" value="Save Changes" ng-click="saveUsers(user)" ng-if="user==selectedUser" />
+                </div>
+            </td>
+            <td>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
   </div>
 </div>

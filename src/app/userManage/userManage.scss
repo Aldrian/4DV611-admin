@@ -1,50 +1,250 @@
-.user-manage {
-  .uppercase {
-    text-transform: uppercase;
+/* ------------------------------------------- */
+/* Mixins
+/* ------------------------------------------- */
+@mixin transitionDuration ($duration) {
+  transition-duration: $duration;
+  -webkit-transition-duration: $duration;
+}
+@mixin easingTimingFunction () {
+  -webkit-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  -moz-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  -ms-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  -o-transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  transition: all 0 cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  /* easeOutQuad */
+  -webkit-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  -moz-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  -ms-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  -o-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+  /* easeOutQuad */
+}
+@mixin transform ($value) {
+  transform: $value;
+  -ms-transform: $value;
+  -webkit-transform: $value;
+}
+/* ------------------------------------------- */
+/* Slide Rigth
+/* ------------------------------------------- */
+.slide-right {
+  @include easingTimingFunction();
+  &.ng-enter {
+    @include transform(translateX(60px));
+    @include transitionDuration(250ms);
+    opacity: 0;
   }
-  
-  /* .squaredOne */
-  $activeColor: #27ae60; //green
-  $darkenColor: darken($activeColor, 20%);
-  .squaredOne {
-    margin: auto;
-    width: 28px;
-    height: 28px;
-    position: relative;
-    background: #fcfff4;
-    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-    box-shadow: inset 0 1px 1px white, 0 1px 3px rgba(0,0,0,0.5);
-    label {
-      width: 20px;
-      height: 20px;
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      cursor: pointer;
-      background: linear-gradient(top, #222 0%, #45484d 100%);
-      box-shadow: inset 0 1px 1px rgba(0,0,0,0.5), 0 1px 0 rgba(255,255,255,1);
-      &:after {
-        content: '';
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        top: 2px;
-        left: 2px;
-        background: $activeColor;
-        background: linear-gradient(top, $activeColor 0%, $darkenColor 100%);
-        box-shadow: inset 0 1px 1px white, 0 1px 3px rgba(0,0,0,0.5);
-        opacity: 0;
+  &.ng-enter-active {
+    @include transform(translateX(0));
+    opacity: 1;
+  }
+  &.ng-leave {
+    @include transform(translateX(0));
+    @include transitionDuration(250ms);
+    opacity: 1;
+  }
+  &.ng-leave-active {
+    @include transform(translateX(60px));
+    opacity: 0;
+  }
+  // Hide
+  &.ng-hide-add {
+    @include transform(translateX(0));
+    @include transitionDuration(250ms);
+    opacity: 1;
+  }
+  &.ng-hide-add.ng-hide-add-active {
+    @include transform(translateX(60px));
+    opacity: 0;
+  }
+  // Show
+  &.ng-hide-remove {
+    @include transform(translateX(60px));
+    @include transitionDuration(250ms);
+    display: block!important;
+    opacity: 0;
+  }
+  &.ng-hide-remove.ng-hide-remove-active {
+    @include transform(translateX(0));
+    opacity: 1;
+  }
+}
+/*------toggle Switch--------*/
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+/* Normal Track */
+input[type="checkbox"].ios-switch + div {
+  vertical-align: middle;
+  width: 40px;
+  height: 20px;
+  border: 1px solid rgba(0,0,0,.4);
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: 0.4s;
+  -webkit-transition-property: background-color, box-shadow;
+  box-shadow: inset 0 0 0 0 rgba(0,0,0,0.4);
+  margin: 15px 1.2em 15px 2.5em;
+}
+/* Big Track */
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+}
+/* Normal Track */
+input[type="checkbox"].ios-switch + div {
+  vertical-align: middle;
+  width: 40px;
+  height: 20px;
+  border: 1px solid rgba(0,0,0,.4);
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-transition-duration: 0.4s;
+  -webkit-transition-property: background-color, box-shadow;
+  box-shadow: inset 0 0 0 0 rgba(0,0,0,0.4);
+  margin: 15px 1.2em 15px 2.5em;
+}
+/* Big Track */
+input[type="checkbox"].bigswitch.ios-switch + div {
+  width: 50px;
+  height: 25px;
+}
+/* Green Track */
+input[type="checkbox"].green.ios-switch:checked + div {
+  background-color: #00e359;
+  border: 1px solid rgba(0, 162, 63,1);
+  box-shadow: inset 0 0 0 10px rgba(0,227,89,1);
+}
+/* Normal Knob */
+input[type="checkbox"].ios-switch + div > div {
+  float: left;
+  width: 18px;
+  height: 18px;
+  border-radius: inherit;
+  background: #ffffff;
+  -webkit-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+  -webkit-transition-duration: 0.4s;
+  -webkit-transition-property: transform, background-color, box-shadow;
+  -moz-transition-timing-function: cubic-bezier(.54,1.85,.5,1);
+  -moz-transition-duration: 0.4s;
+  -moz-transition-property: transform, background-color;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  margin-top: 1px;
+  margin-left: 1px;
+}
+/* Big Knob */
+input[type="checkbox"].bigswitch.ios-switch + div > div {
+  width: 23px;
+  height: 23px;
+  margin-top: 1px;
+}
+/* Checked Big Knob (Blue Style) */
+input[type="checkbox"].bigswitch.ios-switch:checked + div > div {
+  -webkit-transform: translate3d(25px, 0, 0);
+  -moz-transform: translate3d(16px, 0, 0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(8, 80, 172,1);
+}
+/* Green Knob */
+input[type="checkbox"].green.ios-switch:checked + div > div {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 162, 63,1);
+}
+/* Include CSS Normalize */
+$primary-color: #008cba;
+$gray-color: #ddd;
+$medium-up: 600px;
+$large-up: 1000px;
+$global-radius: 4px;
+@mixin heading-font-regular {
+  font-family: 'Helvetica', 'Helvetica Neue', 'Arial', sans-serif;
+}
+//SUPER BASIC TABLE  STYLING
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+main {
+  padding: 2em;
+  float: left;
+  width: 100%;
+}
+a {
+  color: #222;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid #222;
+  &:hover {
+    color: $primary-color;
+  }
+}
+///BASIC TABLE STYLING
+table {
+  width: 100%;
+  float: left;
+  margin: 0 0 2em;
+  thead {
+    border-bottom: 3px solid $primary-color;
+    th {
+      padding: 0.35em 0;
+      font-weight: 400;
+      text-align: left;
+      @include heading-font-regular;
+      font-size: 1.25em;
+    }
+  }
+  tbody {
+    border-bottom: 3px solid $primary-color;
+    tr {
+      border-bottom: 2px solid #ddd;
+      td {
+        a {
+          color: $primary-color;
+          text-decoration: none;
+          display: inline-block;
+          margin: 0 0.5em 0 0;
+          &:hover,
+          &:active,
+          &:focus {
+            color: darken($primary-color, 10%);
+            border: none;
+          }
+        }
+        input[type="submit"] {
+          background-color: rgba(0, 162, 63,1);
+          margin-top: -3em;
+          margin-left: 5em;
+        }
       }
-      &:hover::after {
-        opacity: 0.3;
+      &:hover {
+        background-color: lighten($primary-color, 60%);
       }
     }
-    input[type=checkbox] {
-      visibility: hidden;
-      &:checked + label:after {
-        opacity: 1;
+  }
+  tfoot {
+    td {
+      padding: 0.35em 0;
+      text-align: left;
+      @include heading-font-regular;
+      font-size: 1.25em;
+    }
+  }
+}
+@media screen and (min-width: $large-up) {
+  table {
+    width: 100%;
+    thead {
+      border-bottom: 3px solid $primary-color;
+      th {}
+    }
+    tbody {
+      tr {
+        border-bottom: 1px solid #ddd;
+        td {}
       }
     }
   }
-  /* end .squaredOne */
 }
