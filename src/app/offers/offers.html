@@ -1,0 +1,44 @@
+<div class="offers">
+
+  <div class="loader" ng-show="!loaded">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+
+  <div class="offerOk" ng-if="valid == true">
+    <div class="icon">
+      <i class="fa fa-thumbs-up"></i>
+    </div>
+    <h3 class="text">Offers available for this user :
+    </h3>
+    <div class="offerList">
+        <div class="title" ng-click="openConsumeModal(offer)" ng-repeat="offer in offers">
+          {{offer.description}}
+        </div>
+    </div>
+  </div>
+
+  <div class="offerNotOk" ng-if="valid == false">
+    <div class="icon">
+      <i class="fa fa-exclamation-triangle"></i>
+    </div>
+    <h3 class="text">No offers found for this user.</h3>
+  </div>
+
+  <div class="consumeOffer" ng-if="consume">
+    <div class="icon">
+      <i class="fa fa-exclamation-triangle"></i>
+    </div>
+    <h2 class="offer"{{openOffer.description}}</h2>
+    <h4 class="text">Would you like to mark this offer as used ?</h4>
+    <div class="buttons">
+      <div ng-click="consumeOffer(openOffer)" class="action pull-left">Yes</div>
+      <div ng-click="closeConsumeModal()" class="action pull-right">No</div>
+    </div>
+  </div>
+
+
+</div>

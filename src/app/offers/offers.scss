@@ -1,0 +1,126 @@
+.offers {
+  background-color: #5c5e5e;
+  .offerOk {
+    position: relative;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: #14A697;
+    .icon {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      i {
+        font-size: 20rem;
+        color: white;
+      }
+    }
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4rem;
+      text-align: center;
+      width: 100vw;
+      color: white;
+    }
+    .offerList {
+      color: white;
+      position: absolute;
+      margin-top: 10vw;
+      font-size: 2.5rem;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      width: 90vw;
+      text-align: center;
+    }
+  }
+  .offerNotOk {
+    position: relative;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: #F25252;
+    .icon {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      i {
+        font-size: 20rem;
+        color: white;
+      }
+    }
+    .text {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      font-size: 5rem;
+      text-align: center;
+      width: 80vw;
+      color: white;
+    }
+  }
+  .consumeOffer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: #f2a252;
+    z-index: 10;
+    .icon {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -20%);
+      i {
+        font-size: 12rem;
+        color: white;
+      }
+    }
+    .offer {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, 30%);
+      font-size: 4rem;
+      text-align: center;
+      padding-bottom: 5vw;
+      width: 100vw;
+      color: white;
+    }
+    .text {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -45%);
+      font-size: 2rem;
+      text-align: center;
+      width: 100vw;
+      color: white;
+    }
+    .buttons {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -60%);
+      font-size: 2rem;
+      text-align: center;
+      width: 60vw;
+      .action {
+        color: white;
+        width: 20vw;
+        border-radius: 5px;
+        &.pull-left {
+          background-color: #14A697;
+        }
+        &.pull-right {
+          background-color: #F25252;
+        }
+      }
+    }
+  }
+}

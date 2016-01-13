@@ -31,6 +31,12 @@
         templateUrl: 'app/visitStatistics/visitStatistics.html',
         controller: 'VisitStatisticsController',
         controllerAs: 'visitStatisticsCtrl'
+      })
+      .state('offersManagement', {
+        url: '/offers/:userId',
+        templateUrl: 'app/offers/offers.html',
+        controller: 'OffersController',
+        controllerAs: 'offersCtrl'
       });
 
     $urlRouterProvider.otherwise('/');
