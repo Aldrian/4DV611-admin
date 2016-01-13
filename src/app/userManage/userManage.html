@@ -15,11 +15,11 @@
           <tr ng-repeat="user in users | orderBy: 'username'" ng-show="user.role == '1' || user.role == '0'" ng-click="selectUser(user)">
             <td>{{user.username}}</td>
             <td>
-              <input type="text" class="form-control" placeholder="Password..." ng-model="user.password">
+              <input type="text" class="form-control" placeholder="Password..." ng-model="user.password" ng-disabled="user.username == 'admin'">
             </td>
             <td>
               <label for="{{user.username}}">
-                <input type="checkbox" class="ios-switch green  bigswitch" value="none" name="check" ng-model="user.enabled" id="{{user.username}}" />
+                <input type="checkbox" class="ios-switch green  bigswitch" value="none" name="check" ng-model="user.enabled" id="{{user.username}}" ng-disabled="user.username == 'admin'" />
                 <div>
                   <div></div>
                   <input type="submit" class="btn btn-success slide-right" value="Save Changes" ng-click="saveUsers(user)" ng-if="user==selectedUser" />
