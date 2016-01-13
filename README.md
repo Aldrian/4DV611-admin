@@ -25,3 +25,27 @@ Run `gulp` or `gulp build` for building and `gulp serve` for preview.
 ## Deploying
 
 After running `gulp build`, the standalone application will be available in the dist folder.
+
+#### File structure
+<pre>
+├── app                     - your application folder
+│   ├── components          - components of the application
+│   │   ├── apiInterceptor  - authorization interceptor lies here
+│   │   ├── auth            - authorization service lies here
+│   │   ├── dataProcessing  - event and user data access components
+│   │   ├── event           - event row component page with styles and directive
+│   │   └── pageHeader      - page header component page with styles and directive
+│   ├── login               - login page with styles and controller files
+│   ├── main                - ---main module---
+│   ├── userManage          - user manage page with styles and controller files
+│   └── visitStatistics     - statistics page with styles and controller files
+└── assets                  - assets: fonts, images, translation, etc... goes here
+    └── images              - images: image assets folder
+├──  bower_components/    - local installation of bower packages
+├──  gulp/          - gulp tasks
+├──  nodes_modules/ - local installation of node modules
+├──  bower.json     - bower dependencies
+├──  gulpfile.js    - entry point to all gulp tasks
+├──  package.json   - node dependencies configuration
+├──  README.md      - the generator's README.md
+</pre>
