@@ -175,6 +175,15 @@ More information on the gulp tasks in the [User Guide](https://github.com/Swiip/
 * *angular-templatecache* : all HTML partials will be converted to JS to be bundled in the application
 * **TODO** lazy : don't process files which haven't changed when possible
 
+#### Further improving the project
+* Add notifications of successful or failed authorization
+* Add notifications for updating and publishing events
+* Add notifications of saving user data
+* Improve animations on user managing page
+* Optimize time for loading events for admin
+* Add image placeholder for events if needed
+
+
 [atomeditor]:<https://atom.io/>
 [bracketsecitor]:<http://brackets.io/>
 [ndjssrc]:<https://nodejs.org/en/download/>
