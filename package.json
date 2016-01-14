@@ -2,9 +2,6 @@
   "name": "4Dv611Admin",
   "version": "0.0.0",
   "dependencies": {},
-  "scripts": {
-    "test": "gulp test"
-  },
   "devDependencies": {
     "estraverse": "~4.1.0",
     "gulp": "~3.9.0",
@@ -35,10 +32,6 @@
     "gulp-angular-filesort": "~1.1.1",
     "main-bower-files": "~2.9.0",
     "wiredep": "~2.2.2",
-    "karma": "~0.13.10",
-    "karma-jasmine": "~0.3.6",
-    "karma-phantomjs-launcher": "~0.2.1",
-    "phantomjs": "~1.9.18",
     "karma-angular-filesort": "~1.0.0",
     "karma-coverage": "~0.5.2",
     "karma-ng-html2js-preprocessor": "~0.2.0",

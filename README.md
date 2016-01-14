@@ -12,10 +12,10 @@ travappar's SwedishRacetracks application  admin dashboard to:
 > Download the Node.js source code or a pre-built installer for your platform [from here][ndjssrc].
 > install a good development environment, recommendation; [ATOM][atomeditor] or [Brackets][bracketsecitor]
 
-You need [Gulp][gulp], [Bower][bower], [Yeoman][yo] installed globally:
+You need [Gulp][gulp], [Bower][bower] installed globally:
 
 ```sh
-$ npm install -g yo gulp bower
+$ npm install -g gulp bower
 ```
 After global installation clone the project and install all dependencies and modules
 ```sh
@@ -49,12 +49,12 @@ $ gulp serve
 │   │   ├──  userManage/                    - user manage page with styles and controller files
 │   │   ├──  visitStatistics/               - statistics page with styles and controller files
 │   │   │
-│   │   └──  index.config.(js|ts|coffee)
-│   │   └──  index.constants.(js|ts|coffee)
-│   │   └──  index.module.(js|ts|coffee)
-│   │   └──  index.route.(js|ts|coffee)
-│   │   └──  index.run.(js|ts|coffee)
-│   │   └──  index.(scss|styl|less|css)
+│   │   └──  index.config.js
+│   │   └──  index.constants.js
+│   │   └──  index.module.js
+│   │   └──  index.route.js
+│   │   └──  index.run.js
+│   │   └──  index.scss
 |   |
 │   ├──  assets/                            - assets: fonts, images, translation, etc... goes here
 │       └──  images/                        - images: image assets folder
@@ -63,13 +63,24 @@ $ gulp serve
 ├──  .editorconfig
 ├──  .gitignore
 ├──  .eslintrc
-├──  .yo-rc.json
 ├──  bower.json                             - bower dependencies
 ├──  gulpfile.js                            - entry point to all gulp tasks
-├──  karma.conf.js
 ├──  package.json                           - node dependencies configuration
-└──  protractor.conf.js
 </pre>
+
+#### A few things worth noting
+- The BackEnd URL is a constant included in index.constants.js.
+
+#### App workflow
+
+#### Further improvements to the project
+* Add notifications of successful or failed authorization
+* Add notifications for updating and publishing events
+* Add notifications of saving user data
+* Improve animations on user managing page
+* Optimize time for loading events for admin
+* Add image placeholder for events if needed
+
 
 
 #### `gulp/server.js`
@@ -99,55 +110,6 @@ Last configuration, the `browser` option is used to open the default browser to 
 
 Head over to [Browser Sync list of options](http://www.browsersync.io/docs/options/) for the full list of available configurations for BrowserSync.
 
-
-### `gulp/unit-test.js`
-
-The `test` task is targeted to launch a fully configured Karma / Jasmine / PhantomJS configuration.
-
-#### Limits between Gulp / Karma
-
-Inside the Gulp file, there is not much as the most part of the Karma configuration stays in the `karma.conf.js`. The Gulp file mainly launch Karma through its Node API (`gulp-karma` is deprecated in profit of the Node API).
-
-Our objective are to allow user to use Karma without Gulp if needed. Most of the times to be plugged inside an IDE.
-
-As we wanted to keep some useful tools from the generator. It's from the Karma configuration file that some tools or configuration of the generator which are called.
-
-#### `karma.conf.js`
-
-The `listFiles` function at the start of the file use [wiredep](https://github.com/taptapship/wiredep) and the `gulp/conf.js` file to list the files of the project the same way the injection does. This way, the user should never has to change the file list in the Karma configuration.
-
-Past that two Karma plugin are used:
-- [angularFilesort](https://www.npmjs.com/package/karma-angular-filesort): to order script files like in the injection.
-- [ngHtml2JsPreprocessor](https://github.com/karma-runner/karma-ng-html2js-preprocessor): to be able to load templates inside tests which is needed in directive tests especially.
-
-
-### `gulp/e2e-tests.js`
-
-The `protractor` task is build on top of the [gulp-protractor](https://github.com/mllrsohn/gulp-protractor) plugin which handles the downloading and the launching of an embedded Webdriver with Protractor.
-
-With a dependency on the task `serve:e2e` which launch the server without opening a browser on it, the server is started and a dependency on the initialization of Webdriver, the protractor tests can be launched.
-
-The `protractor.conf.js` are mainly default configurations.
-
-### Generator Features
-#### Yo options
-`yo gulp-angular --help` or `yo gulp-angular -h` for help. All options are not required. If not provided, default values will be used.
-
-* `--app-path='src'` customize Angular's app folder, relative to cwd, default is `src`
-* `--dist-path='dist'` customize build target folder, relative to cwd, default is `dist`
-* `--e2e-path='e2e'` customize e2e test specs folder, relative to cwd, default is `e2e`
-* `--tmp-path='.tmp'` customize pre-processing temp folder, relative to cwd, default is `.tmp`
-* `--skip-install` do not run `bower install` and `npm install` after generating the app, default is `false` (not skip)
-* `--skip-welcome-message` skip yo welcome messages, default is `false` (not skip)
-* `--skip-message` skip install messages, default is `false` (not skip)
-* `--default` use default configurations, default is `false`
-* `--advanced` prompt for advanced additional features, default is `false`
-
-
-Paths configuration are stored in `gulpfile.js`. Change `options.(src|dist|tmp|e2e)` in `gulpfile.js` if you want to config paths after the app is generated.
-
-**Warning**: The paths are also written in the `index.html` for the build with useref. If you want to change these paths, you also have to change the paths there in order to have the build task working.
-
 #### Use Gulp tasks
 
 * `gulp` or `gulp build` to build an optimized version of your application in `/dist`
@@ -175,19 +137,9 @@ More information on the gulp tasks in the [User Guide](https://github.com/Swiip/
 * *angular-templatecache* : all HTML partials will be converted to JS to be bundled in the application
 * **TODO** lazy : don't process files which haven't changed when possible
 
-#### Further improving the project
-* Add notifications of successful or failed authorization
-* Add notifications for updating and publishing events
-* Add notifications of saving user data
-* Improve animations on user managing page
-* Optimize time for loading events for admin
-* Add image placeholder for events if needed
-
-
 [atomeditor]:<https://atom.io/>
 [bracketsecitor]:<http://brackets.io/>
 [ndjssrc]:<https://nodejs.org/en/download/>
 [AngularJS]: <http://angularjs.org>
 [Gulp]: <http://gulpjs.com>
 [bower]:<http://bower.io/>
-[yo]:<http://yeoman.io/>
