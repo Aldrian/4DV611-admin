@@ -80,7 +80,8 @@ $ gulp serve
 * Improve animations on user managing page
 * Optimize time for loading events for admin
 * Add image placeholder for events if needed
-
+* Fix problem with base64 for Swedish characters
+* Add more statistics information and table sorting
 
 
 #### `gulp/server.js`

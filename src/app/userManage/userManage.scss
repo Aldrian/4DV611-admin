@@ -206,6 +206,7 @@
       tr {
         border-bottom: 2px solid #ddd;
         td {
+          position: relative;
           a {
             color: $primary-color;
             text-decoration: none;
@@ -219,9 +220,9 @@
             }
           }
           input[type="submit"] {
-            background-color: rgba(0, 162, 63,1);
-            margin-top: -3em;
-            margin-left: 5em;
+            position: absolute;
+            top: 12px;
+            left: 105px;
           }
         }
         &:hover {
