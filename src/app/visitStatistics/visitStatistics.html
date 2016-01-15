@@ -4,18 +4,17 @@
     <table class="table">
       <thead>
         <tr>
-          <th>Column 1</th>
-          <th>Column 2</th>
-          <th>Column 3</th>
-          <th>Column 4</th>
+          <th>User ID</th>
+          <th>Track</th>
+          <th>Date</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="col-md-2">1</td>
-          <td class="col-md-2">2</td>
-          <td class="col-md-2">3</td>
-          <td class="col-md-2">4</td>
+        <tr ng-repeat="stat in statistics | orderBy: 'stat.date'">
+          <td class="col-md-4">{{stat.deviceId}}</td>
+          <td class="col-md-4">{{stat.track.name}}</td>
+          <td class="col-md-6">{{stat.date | date}}</td>
         </tr>
       </tbody>
     </table>
